@@ -11,6 +11,8 @@ import Alamofire
 
 class LoginViewController: UIViewController {
     
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     
@@ -25,10 +27,17 @@ class LoginViewController: UIViewController {
         ]
         
         Alamofire.request(SERVER_URL + "auth/authenticate", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            debugPrint(response)
+            // debugPrint(response)
             switch response.result {
-            case .success:
+            case .success(let data):
                 print("Auth successful")
+                if let json = data as? [String : AnyObject] {
+                    if let token = json["data"]!["token"] as? String {
+                        print("token: \(token)")
+                        // Save returned JWT to UserDefaults
+                        self.defaults.set(token, forKey: "token")
+                    }
+                }
                 self.performSegue(withIdentifier: "loginSegue", sender: sender)
             case .failure(let error):
                 print(error)

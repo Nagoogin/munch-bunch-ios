@@ -9,11 +9,16 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    @IBOutlet weak var labelTest: UILabel!
+    
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        if let token = defaults.object(forKey: "token") as? String {
+            labelTest.text = token
+        }
     }
 
     override func didReceiveMemoryWarning() {

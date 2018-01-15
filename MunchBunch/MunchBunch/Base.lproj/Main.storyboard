@@ -221,6 +221,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pWu-Yw-7ua"/>
                     </view>
+                    <connections>
+                        <outlet property="labelTest" destination="o2l-2T-84o" id="Xwu-py-VCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7Q-VU-DqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
