@@ -27,18 +27,18 @@ class LoginViewController: UIViewController {
         ]
         
         Alamofire.request(SERVER_URL + "auth/authenticate", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            // debugPrint(response)
             switch response.result {
             case .success(let data):
                 print("Auth successful")
+                // Convert json response to a dictionary
                 if let json = data as? [String : AnyObject] {
                     if let token = json["data"]!["token"] as? String {
-                        print("token: \(token)")
                         // Save returned JWT to UserDefaults
                         self.defaults.set(token, forKey: "token")
+                        // Segue to HomeViewController
+                        self.performSegue(withIdentifier: "loginSegue", sender: sender)
                     }
                 }
-                self.performSegue(withIdentifier: "loginSegue", sender: sender)
             case .failure(let error):
                 print(error)
             }

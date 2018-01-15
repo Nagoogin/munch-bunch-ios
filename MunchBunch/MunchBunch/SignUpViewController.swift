@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func didTouchCancel(_ sender: Any) {
-        
+        performSegueToReturnBack()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

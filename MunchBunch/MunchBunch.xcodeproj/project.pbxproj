@@ -15,6 +15,7 @@
 		9DC3D067200C5926000B6A4B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D066200C5926000B6A4B /* HomeViewController.swift */; };
 		9DC3D069200C5940000B6A4B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D068200C5940000B6A4B /* SignUpViewController.swift */; };
 		9DC3D06B200C5AC2000B6A4B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D06A200C5AC2000B6A4B /* Constants.swift */; };
+		9DC3D06D200CA1B6000B6A4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D06C200CA1B6000B6A4B /* Extensions.swift */; };
 		F2282DD2A6C1DB747F43E134 /* Pods_MunchBunch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB420E5813E33ACA1B31E3F /* Pods_MunchBunch.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		9DC3D066200C5926000B6A4B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9DC3D068200C5940000B6A4B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9DC3D06A200C5AC2000B6A4B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9DC3D06C200CA1B6000B6A4B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C79DA9948EFD5E3DA969E59A /* Pods-MunchBunch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MunchBunch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MunchBunch/Pods-MunchBunch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				9DC3D066200C5926000B6A4B /* HomeViewController.swift */,
 				9DC3D068200C5940000B6A4B /* SignUpViewController.swift */,
 				9DC3D06A200C5AC2000B6A4B /* Constants.swift */,
+				9DC3D06C200CA1B6000B6A4B /* Extensions.swift */,
 			);
 			path = MunchBunch;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC3D06B200C5AC2000B6A4B /* Constants.swift in Sources */,
+				9DC3D06D200CA1B6000B6A4B /* Extensions.swift in Sources */,
 				9D0E5D43200B603500CDE9B4 /* LoginViewController.swift in Sources */,
 				9D0E5D41200B603500CDE9B4 /* AppDelegate.swift in Sources */,
 				9DC3D069200C5940000B6A4B /* SignUpViewController.swift in Sources */,
