@@ -18,6 +18,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     let regionRadius: CLLocationDistance = 2000
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
         // TODO: initialize mapView, get nearby trucks, annotate mapView
+        
+        
+        if let token = defaults.object(forKey: "token") as? String {
+            let authHeader = "Bearer " + token
+            
+            // Create auth header
+            let headers: HTTPHeaders = [
+                "Authorization":authHeader
+            ]
+            
+            Alamofire.request(SERVER_URL + "trucks", method: .get, headers: headers).responseJSON {
+                response in
+                debugPrint(response)
+                // TODO: Parse trucks response
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
