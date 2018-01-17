@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -30,15 +31,12 @@ class LoginViewController: UIViewController {
             switch response.result {
             case .success(let data):
                 print("Auth successful")
-                // Convert json response to a dictionary
-                if let json = data as? [String : AnyObject] {
-                    if let token = json["data"]!["token"] as? String {
-                        // Save returned JWT to UserDefaults
-                        self.defaults.set(token, forKey: "token")
-                        // Segue to HomeViewController
-                        self.performSegue(withIdentifier: "loginSegue", sender: sender)
-                    }
-                }
+                
+                let json = JSON(data)
+                let token = json["data"]["token"].string
+                self.defaults.set(token, forKey: "token")
+                self.performSegue(withIdentifier: "loginSegue", sender: sender)
+
             case .failure(let error):
                 print(error)
             }

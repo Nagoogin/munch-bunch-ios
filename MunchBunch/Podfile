@@ -7,4 +7,5 @@ target 'MunchBunch' do
 
   # Pods for MunchBunch
   pod 'Alamofire', '~> 4.5'
+  pod 'SwiftyJSON'
 end

@@ -10,10 +10,10 @@ import UIKit
 import Alamofire
 import MapKit
 import CoreLocation
+import SwiftyJSON
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
-    // TODO: connect IBOutlet to MapViewController in storyboard
     @IBOutlet weak var mapView: MKMapView!
     
     var locationManager: CLLocationManager!
@@ -47,18 +47,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 switch response.result {
                 case .success(let data):
                     print("Get trucks successful")
-                    if let json = data as? [String : AnyObject] {
-                        if let trucksJSON = json["data"] as? [[String : AnyObject]] {
-                            // TODO: Get truck information
-                            for i in 0..<trucksJSON.count {
-                                let truck = trucksJSON[i]["name"] as! String
-                                print(truck)
-                                self.trucks = self.parseTrucks(trucksJSON: trucksJSON)
-                                // Add truck annotations to mapView
-                                self.addTrucksToMapView(trucks: self.trucks)
-                            }
-                        }
+                    let json = JSON(data)
+                    let trucksJSON: [JSON] = json["data"].arrayValue
+                    // TODO: Remove this when tested
+                    for i in 0..<trucksJSON.count {
+                        let truck = trucksJSON[i]["name"].string!
+                        print(truck)
                     }
+                    // Parse truck json data into Truck objects
+                    // self.trucks = self.parseTrucks(trucksJSON: trucksJSON)
+                    // self.addTrucksToMapView(trucks: self.trucks)
                 case .failure(let error):
                     print(error)
                 }
@@ -71,13 +69,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func parseTrucks(trucksJSON: [[String : AnyObject]]) -> [Truck] {
+    func parseTrucks(trucksJSON: [JSON]) -> [Truck] {
         var trucks: [Truck] = []
         for i in 0..<trucksJSON.count {
-            let id = trucksJSON[i]["id"] as! Int
-            let name = trucksJSON[i]["name"] as! String
-            let latitude = trucksJSON[i]["coordinate"]!["latitude"] as! Double
-            let longitude = trucksJSON[i]["coordinate"]!["longitude"] as! Double
+            let id = trucksJSON[i]["id"].int!
+            let name = trucksJSON[i]["name"].string!
+            
+            // TODO: Check if truck is currently broadcasting location
+            let latitude = trucksJSON[i]["coordinate"]["latitude"].double!
+            let longitude = trucksJSON[i]["coordinate"]["longitude"].double!
             let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
             let truck = Truck(id: id, name: name, coordinate: coordinate)
             trucks.append(truck)
