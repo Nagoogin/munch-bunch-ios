@@ -40,7 +40,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             Alamofire.request(SERVER_URL + "trucks", method: .get, headers: headers).responseJSON {
                 response in
                 debugPrint(response)
-                // TODO: Parse trucks response
+                
+                // Parse trucks response
+                switch response.result {
+                case .success(let data):
+                    print("Get trucks successful")
+                    if let json = data as? [String : AnyObject] {
+                        if let trucks = json["data"] as? [[String : AnyObject]] {
+                            // TODO: Get truck information
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
