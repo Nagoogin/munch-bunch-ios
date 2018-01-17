@@ -48,6 +48,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     if let json = data as? [String : AnyObject] {
                         if let trucks = json["data"] as? [[String : AnyObject]] {
                             // TODO: Get truck information
+                            for i in 0..<trucks.count {
+                                let truck = trucks[i]["name"] as! String
+                                print(truck)
+                            }
                         }
                     }
                 case .failure(let error):
