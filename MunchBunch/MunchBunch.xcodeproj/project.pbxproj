@@ -17,6 +17,9 @@
 		9DC3D06B200C5AC2000B6A4B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D06A200C5AC2000B6A4B /* Constants.swift */; };
 		9DC3D06D200CA1B6000B6A4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D06C200CA1B6000B6A4B /* Extensions.swift */; };
 		9DC3D06F200CA268000B6A4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D06E200CA268000B6A4B /* MapViewController.swift */; };
+		9DC3D071200F515E000B6A4B /* Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D070200F515E000B6A4B /* Truck.swift */; };
+		9DC3D075200F52C1000B6A4B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D074200F52C1000B6A4B /* Location.swift */; };
+		9DC3D077200F52DF000B6A4B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D076200F52DF000B6A4B /* User.swift */; };
 		F2282DD2A6C1DB747F43E134 /* Pods_MunchBunch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB420E5813E33ACA1B31E3F /* Pods_MunchBunch.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		9DC3D06A200C5AC2000B6A4B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DC3D06C200CA1B6000B6A4B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DC3D06E200CA268000B6A4B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9DC3D070200F515E000B6A4B /* Truck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck.swift; sourceTree = "<group>"; };
+		9DC3D074200F52C1000B6A4B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9DC3D076200F52DF000B6A4B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C79DA9948EFD5E3DA969E59A /* Pods-MunchBunch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MunchBunch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MunchBunch/Pods-MunchBunch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,19 +77,38 @@
 		9D0E5D3F200B603500CDE9B4 /* MunchBunch */ = {
 			isa = PBXGroup;
 			children = (
+				9DC3D073200F5171000B6A4B /* Model */,
+				9DC3D072200F5166000B6A4B /* ViewControllers */,
 				9D0E5D40200B603500CDE9B4 /* AppDelegate.swift */,
-				9D0E5D42200B603500CDE9B4 /* LoginViewController.swift */,
 				9D0E5D44200B603500CDE9B4 /* Main.storyboard */,
 				9D0E5D47200B603500CDE9B4 /* Assets.xcassets */,
 				9D0E5D49200B603500CDE9B4 /* LaunchScreen.storyboard */,
 				9D0E5D4C200B603500CDE9B4 /* Info.plist */,
-				9DC3D066200C5926000B6A4B /* HomeViewController.swift */,
-				9DC3D068200C5940000B6A4B /* SignUpViewController.swift */,
 				9DC3D06A200C5AC2000B6A4B /* Constants.swift */,
 				9DC3D06C200CA1B6000B6A4B /* Extensions.swift */,
-				9DC3D06E200CA268000B6A4B /* MapViewController.swift */,
 			);
 			path = MunchBunch;
+			sourceTree = "<group>";
+		};
+		9DC3D072200F5166000B6A4B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D0E5D42200B603500CDE9B4 /* LoginViewController.swift */,
+				9DC3D066200C5926000B6A4B /* HomeViewController.swift */,
+				9DC3D068200C5940000B6A4B /* SignUpViewController.swift */,
+				9DC3D06E200CA268000B6A4B /* MapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9DC3D073200F5171000B6A4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DC3D070200F515E000B6A4B /* Truck.swift */,
+				9DC3D074200F52C1000B6A4B /* Location.swift */,
+				9DC3D076200F52DF000B6A4B /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CC658F1B0B30CE8D7CADD834 /* Pods */ = {
@@ -236,9 +261,12 @@
 				9DC3D06D200CA1B6000B6A4B /* Extensions.swift in Sources */,
 				9D0E5D43200B603500CDE9B4 /* LoginViewController.swift in Sources */,
 				9D0E5D41200B603500CDE9B4 /* AppDelegate.swift in Sources */,
+				9DC3D075200F52C1000B6A4B /* Location.swift in Sources */,
 				9DC3D069200C5940000B6A4B /* SignUpViewController.swift in Sources */,
 				9DC3D067200C5926000B6A4B /* HomeViewController.swift in Sources */,
 				9DC3D06F200CA268000B6A4B /* MapViewController.swift in Sources */,
+				9DC3D077200F52DF000B6A4B /* User.swift in Sources */,
+				9DC3D071200F515E000B6A4B /* Truck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

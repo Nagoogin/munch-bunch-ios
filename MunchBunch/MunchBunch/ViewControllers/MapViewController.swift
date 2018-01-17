@@ -20,6 +20,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let regionRadius: CLLocationDistance = 2000
     
     let defaults = UserDefaults.standard
+    
+    var trucks: [Truck]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +40,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             ]
             
             Alamofire.request(SERVER_URL + "trucks", method: .get, headers: headers).responseJSON {
-                response in
-                debugPrint(response)
-                
+                response in                
                 // Parse trucks response
                 switch response.result {
                 case .success(let data):
                     print("Get trucks successful")
                     if let json = data as? [String : AnyObject] {
-                        if let trucks = json["data"] as? [[String : AnyObject]] {
+                        if let trucksJSON = json["data"] as? [[String : AnyObject]] {
                             // TODO: Get truck information
-                            for i in 0..<trucks.count {
-                                let truck = trucks[i]["name"] as! String
+                            for i in 0..<trucksJSON.count {
+                                let truck = trucksJSON[i]["name"] as! String
                                 print(truck)
+                                trucks = parseTrucks(trucksJSON: trucksJSON)
+                                // Add truck annotations to mapView
+                                // addTrucksToMapView(trucks)
                             }
                         }
                     }
@@ -64,6 +67,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func parseTrucks(trucksJSON: [[String : AnyObject]]) -> [Truck] {
+        let trucks: [Truck] = []
+        for i in 0..<trucksJSON.count {
+            let id = trucksJSON[i]["id"] as! String
+            let name = trucksJSON[i]["name"] as! String
+            let latitude = trucksJSON[i]["location"]!["latitude"] as! Double
+            let longitude = trucksJSON[i]["location"]!["longitude"] as! Double
+            let location = Location(latitude: latitude, longitude: longitude)
+            let truck = Truck(id: id, name: name, location: location)
+            trucks.append(truck)
+        }
+        return trucks
+    }
+    
+    func addTrucksToMapView(trucks: [Truck]) {
+        // TODO: Complete this
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
