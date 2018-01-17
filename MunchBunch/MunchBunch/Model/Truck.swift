@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import MapKit
 
-struct Truck {
+class Truck: NSObject, MKAnnotation {
+    
     let id: Int
     let name: String
-    let location: Location
+    let coordinate: CLLocationCoordinate2D
+    
+    init(id: Int, name: String, coordinate: CLLocationCoordinate2D) {
+        self.id = id
+        self.name = name
+        self.coordinate = coordinate
+        
+        super.init()
+    }
 }

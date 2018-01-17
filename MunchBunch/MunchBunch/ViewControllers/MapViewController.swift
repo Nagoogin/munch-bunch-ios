@@ -21,15 +21,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let defaults = UserDefaults.standard
     
-    var trucks: [Truck]
+    var trucks: [Truck] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // TODO: initialize mapView, get nearby trucks, annotate mapView
-        
+        // Initialize mapView, get nearby trucks, annotate mapView
+        // TODO: Set to user's current location
+        let initialLocation = CLLocation(latitude: 34.0224, longitude: -118.2851)
+        centerMapOnLocation(location: initialLocation)
         
         if let token = defaults.object(forKey: "token") as? String {
             let authHeader = "Bearer " + token
@@ -51,9 +53,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                             for i in 0..<trucksJSON.count {
                                 let truck = trucksJSON[i]["name"] as! String
                                 print(truck)
-                                trucks = parseTrucks(trucksJSON: trucksJSON)
+                                self.trucks = self.parseTrucks(trucksJSON: trucksJSON)
                                 // Add truck annotations to mapView
-                                // addTrucksToMapView(trucks)
+                                self.addTrucksToMapView(trucks: self.trucks)
                             }
                         }
                     }
@@ -70,21 +72,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func parseTrucks(trucksJSON: [[String : AnyObject]]) -> [Truck] {
-        let trucks: [Truck] = []
+        var trucks: [Truck] = []
         for i in 0..<trucksJSON.count {
-            let id = trucksJSON[i]["id"] as! String
+            let id = trucksJSON[i]["id"] as! Int
             let name = trucksJSON[i]["name"] as! String
-            let latitude = trucksJSON[i]["location"]!["latitude"] as! Double
-            let longitude = trucksJSON[i]["location"]!["longitude"] as! Double
-            let location = Location(latitude: latitude, longitude: longitude)
-            let truck = Truck(id: id, name: name, location: location)
+            let latitude = trucksJSON[i]["coordinate"]!["latitude"] as! Double
+            let longitude = trucksJSON[i]["coordinate"]!["longitude"] as! Double
+            let coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            let truck = Truck(id: id, name: name, coordinate: coordinate)
             trucks.append(truck)
         }
         return trucks
     }
     
     func addTrucksToMapView(trucks: [Truck]) {
-        // TODO: Complete this
+        for i in 0..<trucks.count {
+            mapView.addAnnotation(trucks[i])
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
