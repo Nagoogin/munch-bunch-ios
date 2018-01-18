@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ChameleonFramework
+import Validator
 
 class SignUpViewController: UIViewController {
     
@@ -61,6 +63,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = GradientColor(UIGradientStyle.leftToRight, frame: view.frame, colors: [FlatLime(), FlatGreen()])
     }
 
     override func didReceiveMemoryWarning() {

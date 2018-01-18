@@ -8,4 +8,7 @@ target 'MunchBunch' do
   # Pods for MunchBunch
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
+  pod 'SwiftyBeaver'
+  pod 'Validator'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
 end

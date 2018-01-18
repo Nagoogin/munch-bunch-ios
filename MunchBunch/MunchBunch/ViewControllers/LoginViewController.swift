@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import ChameleonFramework
+import Validator
 
 class LoginViewController: UIViewController {
     
@@ -16,7 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
-    
+    @IBOutlet weak var buttonLogin: UIButton!
     @IBAction func didTouchLogin(_ sender: Any) {
         // TODO: add form validation and error handling
         let username: String = textFieldUsername.text!
@@ -50,7 +52,29 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        view.backgroundColor = GradientColor(UIGradientStyle.leftToRight, frame: view.frame, colors: [FlatLime(), FlatGreen()])
+        textFieldUsername.setBottomLine(borderColor: FlatWhite(), placeholderText: "Username")
+        textFieldPassword.setBottomLine(borderColor: FlatWhite(), placeholderText: "Password")
+        buttonLogin.setBorder(borderColor: FlatWhite(), radius: 5.0, width: 2.0)
+        
+        // POC: Validation on input change
+        var rules = ValidationRuleSet<String>()
+        let testRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
+        rules.add(rule: testRule)
+        textFieldUsername.validationRules = rules
+        
+        textFieldUsername.validationHandler = { result in
+            switch result {
+            case .valid:
+                print("😀")
+            case .invalid(let failures):
+                let err: ValidationError = failures.first! as! ValidationError
+                print(err.message)
+            }
+        }
+        
+        textFieldUsername.validateOnInputChange(enabled: true)
+        
     }
 
     override func didReceiveMemoryWarning() {

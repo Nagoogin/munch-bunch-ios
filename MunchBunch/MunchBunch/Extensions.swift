@@ -16,13 +16,21 @@ extension UITextField {
         self.backgroundColor = UIColor.clear
         
         let borderLine = UIView()
-        let height = 1.0
+        let height = 2.0
         borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - height, width: Double(self.frame.width), height: height)
         
         borderLine.backgroundColor = borderColor
         self.addSubview(borderLine)
         
         self.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+    }
+}
+
+extension UIButton {
+    func setBorder(borderColor: UIColor, radius: CGFloat, width: CGFloat) {
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = width
     }
 }
 
