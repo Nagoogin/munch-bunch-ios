@@ -28,6 +28,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         // Do any additional setup after loading the view.
         
+        self.navigationItem.title = "Map"
+        
         // Initialize mapView, get nearby trucks, annotate mapView
         // TODO: Set to user's current location
         let initialLocation = CLLocation(latitude: 34.0224, longitude: -118.2851)

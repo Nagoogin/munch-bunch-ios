@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Validator
 
 extension UITextField {
     func setBottomLine(borderColor: UIColor, placeholderText: String) {
@@ -41,5 +42,21 @@ extension UIViewController {
         } else {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension UITextField {
+    func addValidation(rules: ValidationRuleSet<String>) {
+        self.validationRules = rules
+        self.validationHandler = { result in
+            switch result {
+            case .valid:
+                print("😀")
+            case .invalid(let failures):
+                let err: ValidationError = failures.first! as! ValidationError
+                print(err.message)
+            }
+        }
+        self.validateOnInputChange(enabled: true)
     }
 }

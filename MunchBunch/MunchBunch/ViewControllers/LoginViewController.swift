@@ -61,19 +61,8 @@ class LoginViewController: UIViewController {
         var rules = ValidationRuleSet<String>()
         let testRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
         rules.add(rule: testRule)
-        textFieldUsername.validationRules = rules
-        
-        textFieldUsername.validationHandler = { result in
-            switch result {
-            case .valid:
-                print("😀")
-            case .invalid(let failures):
-                let err: ValidationError = failures.first! as! ValidationError
-                print(err.message)
-            }
-        }
-        
-        textFieldUsername.validateOnInputChange(enabled: true)
+        textFieldUsername.addValidation(rules: rules)
+        textFieldPassword.addValidation(rules: rules)
         
     }
 

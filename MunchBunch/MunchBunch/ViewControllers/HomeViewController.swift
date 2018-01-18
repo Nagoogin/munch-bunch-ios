@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var labelTest: UILabel!
@@ -16,6 +17,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.title = "Home"
+        view.backgroundColor = FlatWhite()
+        
         if let token = defaults.object(forKey: "token") as? String {
             labelTest.text = token
         }

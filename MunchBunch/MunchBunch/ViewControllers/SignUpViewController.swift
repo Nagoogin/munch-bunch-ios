@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textFieldRepeatedPassword: UITextField!
+    @IBOutlet weak var buttonSignUp: UIButton!
     
     @IBAction func didTouchSignUp(_ sender: Any) {
         // TODO: add form validation and error handling
@@ -64,6 +65,24 @@ class SignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = GradientColor(UIGradientStyle.leftToRight, frame: view.frame, colors: [FlatLime(), FlatGreen()])
+        textFieldFirstName.setBottomLine(borderColor: FlatWhite(), placeholderText: "First name")
+        textFieldLastName.setBottomLine(borderColor: FlatWhite(), placeholderText: "Last name")
+        textFieldUsername.setBottomLine(borderColor: FlatWhite(), placeholderText: "Username")
+        textFieldEmail.setBottomLine(borderColor: FlatWhite(), placeholderText: "Email")
+        textFieldPassword.setBottomLine(borderColor: FlatWhite(), placeholderText: "Password")
+        textFieldRepeatedPassword.setBottomLine(borderColor: FlatWhite(), placeholderText: "Repeat password")
+        buttonSignUp.setBorder(borderColor: FlatWhite(), radius: 5.0, width: 2.0)
+        
+        // TODO: refactor and rethink necessary rules for each field
+        var rules = ValidationRuleSet<String>()
+        let testRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
+        rules.add(rule: testRule)
+        textFieldFirstName.addValidation(rules: rules)
+        textFieldLastName.addValidation(rules: rules)
+        textFieldUsername.addValidation(rules: rules)
+        textFieldEmail.addValidation(rules: rules)
+        textFieldPassword.addValidation(rules: rules)
+        textFieldPassword.addValidation(rules: rules)
     }
 
     override func didReceiveMemoryWarning() {
