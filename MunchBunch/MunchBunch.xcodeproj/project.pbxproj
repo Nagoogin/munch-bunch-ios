@@ -21,6 +21,7 @@
 		9DC3D077200F52DF000B6A4B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3D076200F52DF000B6A4B /* User.swift */; };
 		9DD7EFC92010AAB80000DE7A /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7EFC82010AAB80000DE7A /* ValidationError.swift */; };
 		9DD7EFCD20113A620000DE7A /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7EFCB20113A610000DE7A /* UIScrollView+EmptyDataSet.m */; };
+		9DD7EFCF2011411F0000DE7A /* MyTrucksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD7EFCE2011411F0000DE7A /* MyTrucksTableViewController.swift */; };
 		F2282DD2A6C1DB747F43E134 /* Pods_MunchBunch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB420E5813E33ACA1B31E3F /* Pods_MunchBunch.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		9DD7EFCA20113A600000DE7A /* MunchBunch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MunchBunch-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DD7EFCB20113A610000DE7A /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		9DD7EFCC20113A610000DE7A /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		9DD7EFCE2011411F0000DE7A /* MyTrucksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrucksTableViewController.swift; sourceTree = "<group>"; };
 		C79DA9948EFD5E3DA969E59A /* Pods-MunchBunch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MunchBunch.release.xcconfig"; path = "Pods/Target Support Files/Pods-MunchBunch/Pods-MunchBunch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				9DC3D066200C5926000B6A4B /* HomeViewController.swift */,
 				9DC3D068200C5940000B6A4B /* SignUpViewController.swift */,
 				9DC3D06E200CA268000B6A4B /* MapViewController.swift */,
+				9DD7EFCE2011411F0000DE7A /* MyTrucksTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				9DD7EFCD20113A620000DE7A /* UIScrollView+EmptyDataSet.m in Sources */,
 				9DC3D06B200C5AC2000B6A4B /* Constants.swift in Sources */,
 				9DD7EFC92010AAB80000DE7A /* ValidationError.swift in Sources */,
+				9DD7EFCF2011411F0000DE7A /* MyTrucksTableViewController.swift in Sources */,
 				9DC3D06D200CA1B6000B6A4B /* Extensions.swift in Sources */,
 				9D0E5D43200B603500CDE9B4 /* LoginViewController.swift in Sources */,
 				9D0E5D41200B603500CDE9B4 /* AppDelegate.swift in Sources */,

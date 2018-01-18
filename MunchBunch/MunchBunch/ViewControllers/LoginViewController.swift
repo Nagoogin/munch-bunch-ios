@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         textFieldPassword.setBottomLine(borderColor: FlatWhite(), placeholderText: "Password")
         buttonLogin.setBorder(borderColor: FlatWhite(), radius: 5.0, width: 2.0)
         
-        // POC: Validation on input change
+        // MARK - POC of validation on input change
         var rules = ValidationRuleSet<String>()
         let testRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
         rules.add(rule: testRule)
